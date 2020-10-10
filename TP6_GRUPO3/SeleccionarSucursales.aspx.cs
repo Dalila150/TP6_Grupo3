@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TP6_GRUPO3.Clases;
 
 namespace TP6_GRUPO3
 {
@@ -11,7 +12,19 @@ namespace TP6_GRUPO3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack == false)
+            {
+                CargarDataList();
+            }
         }
+
+        public void CargarDataList()
+        {
+            GestionProvincias gProvincias = new GestionProvincias();
+            dlProvincias.DataSource = gProvincias.obtenerTodasLasProvincias();
+            dlProvincias.DataBind();
+        }
+
+        
     }
 }
