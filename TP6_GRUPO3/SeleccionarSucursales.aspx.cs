@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TP6_GRUPO3.Clases;
+using System.Data;
 
 namespace TP6_GRUPO3
 {
@@ -25,6 +26,14 @@ namespace TP6_GRUPO3
             dlProvincias.DataBind();
         }
 
-        
+        protected void btnSelecc_Command(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "eventoSeleccionar")
+            {
+                Session["DatosEnviados"] = e.CommandArgument.ToString();
+                Response.Redirect("ListadoSucursalesSeleccionados.aspx");
+            }
+        }
+
     }
 }

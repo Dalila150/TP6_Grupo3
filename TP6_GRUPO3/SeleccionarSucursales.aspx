@@ -90,7 +90,7 @@
                     <td class="auto-style24">Scarpato Wanda</td>
                     <td class="auto-style7">&nbsp;</td>
                     <td class="auto-style9">
-                        <asp:HyperLink ID="HyperLink" runat="server">Listado de sucursales</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink" runat="server" NavigateUrl="~/ListadoSucursalesSeleccionados.aspx.designer.cs">Listado de sucursales</asp:HyperLink>
                     </td>
                     <td class="auto-style27">
                         <asp:HyperLink ID="HyperLink1" runat="server">Mostrar sucursales seleccionadas</asp:HyperLink>
@@ -210,7 +210,7 @@
                                     <br />
                                     <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionSucursal") %>' Font-Size="Small"></asp:Label>
                                     <br />
-                                    <asp:Button ID="btnSelecc" runat="server" Text="Seleccionar" Width="133px" />
+                                    <asp:Button ID="btnSelecc" runat="server" Text="Seleccionar" Width="133px" CommandArgument='<%# /*Eval("Id_Sucursal")+"-"+*/Eval("NombreSucursal")+"-"+Eval("DescripcionSucursal") %>' CommandName="eventoSeleccionar" OnCommand="btnSelecc_Command" />
                                 </td>
                             </ItemTemplate>
                             <LayoutTemplate>
@@ -246,7 +246,7 @@
                                     <br /></td>
                             </SelectedItemTemplate>
                         </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString4 %>" SelectCommand="SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString5 %>" SelectCommand="SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]"></asp:SqlDataSource>
                     </td>
                     <td class="auto-style29">&nbsp;</td>
                     <td class="auto-style32">&nbsp;</td>
