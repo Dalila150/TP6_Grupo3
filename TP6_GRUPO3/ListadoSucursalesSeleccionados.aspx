@@ -10,7 +10,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+            <asp:GridView ID="gvSeleccionados" runat="server">
+            </asp:GridView>
         </div>
     </form>
 </body>

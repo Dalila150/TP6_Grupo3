@@ -30,9 +30,40 @@ namespace TP6_GRUPO3
         {
             if (e.CommandName == "eventoSeleccionar")
             {
-                Session["DatosEnviados"] = e.CommandArgument.ToString();
-                Response.Redirect("ListadoSucursalesSeleccionados.aspx");
+                if (Session["DatosEnviados"] == null)
+                {
+                    Session["DatosEnviados"] = CrearTabla();
+                }
+
+                Conexion conexion = new Conexion();
+
+                string Nombre = "select NombreSucursal where Id_Sucursal =" + e.CommandArgument.ToString(), Descripcion = "select DescripcionSucursal where Id_Sucursal =" + e.CommandArgument.ToString();
+
+                AgregarFila((DataTable)Session["DatosEnviados"], e.CommandArgument.ToString(), conexion.DevolverDatos(Nombre), conexion.DevolverDatos(Descripcion)); 
+
             }
+        }
+
+
+        public DataTable CrearTabla()
+        {
+            DataTable dt = new DataTable();
+            DataColumn Columna = new DataColumn("IdSucursal", System.Type.GetType("System.string")); 
+            dt.Columns.Add(Columna);
+            Columna = new DataColumn("NOMBRE", System.Type.GetType("System.string"));
+            dt.Columns.Add(Columna);
+            Columna = new DataColumn("Descripcion", System.Type.GetType("System.string"));
+            dt.Columns.Add(Columna);
+            return dt;
+        }
+
+        public void AgregarFila(DataTable Tabla, string ID_SUCURSAL, string NOMBRE_SUCURSAL, string DESCRIPCION)
+        {
+            DataRow dr = Tabla.NewRow();
+            dr["ID_SUCURSAL"] = ID_SUCURSAL;
+            dr["NOMBRE_SUCURSAL"] = NOMBRE_SUCURSAL;
+            dr["DESCRIPCION"] = DESCRIPCION;
+            Tabla.Rows.Add(dr);
         }
 
     }

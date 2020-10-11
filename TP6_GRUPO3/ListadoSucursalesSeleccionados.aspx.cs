@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,9 +12,10 @@ namespace TP6_GRUPO3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["DatosEnviados"]!=null)
+            if (IsPostBack == false)
             {
-                lblMensaje.Text = Session["DatosEnviados"].ToString();
+                gvSeleccionados.DataSource = (DataTable)Session["DatosEnviados"];
+                gvSeleccionados.DataBind();
             }
         }
     }

@@ -52,6 +52,15 @@ namespace TP6_GRUPO3.Clases
             }
         }
 
+        public string DevolverDatos(string Consulta)
+        {
+            SqlConnection conexcion = ObtenerConexion();
+            SqlCommand comando = new SqlCommand(Consulta, conexcion);
+            string dato = comando.ToString();
+            conexcion.Close();
+            return dato;
+        }
+
         public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, String NombreSP)
         {
             int FilasCambiadas;
