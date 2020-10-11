@@ -49,20 +49,20 @@ namespace TP6_GRUPO3
         public DataTable CrearTabla()
         {
             DataTable dt = new DataTable();
-            DataColumn Columna = new DataColumn("IdSucursal", System.Type.GetType("System.string")); 
+            DataColumn Columna = new DataColumn("IdSucursal", System.Type.GetType("System.String")); 
             dt.Columns.Add(Columna);
-            Columna = new DataColumn("NOMBRE", System.Type.GetType("System.string"));
+            Columna = new DataColumn("Nombre", System.Type.GetType("System.String"));
             dt.Columns.Add(Columna);
-            Columna = new DataColumn("Descripcion", System.Type.GetType("System.string"));
+            Columna = new DataColumn("Descripcion", System.Type.GetType("System.String"));
             dt.Columns.Add(Columna);
             return dt;
         }
 
-        public void AgregarFila(DataTable Tabla, string ID_SUCURSAL, string NOMBRE_SUCURSAL, string DESCRIPCION)
+        public void AgregarFila(DataTable Tabla, string IdSucursal, string NOMBRE, string DESCRIPCION)
         {
             DataRow dr = Tabla.NewRow();
-            dr["ID_SUCURSAL"] = ID_SUCURSAL;
-            dr["NOMBRE_SUCURSAL"] = NOMBRE_SUCURSAL;
+            dr["IdSucursal"] = IdSucursal;
+            dr["NOMBRE"] = NOMBRE;
             dr["DESCRIPCION"] = DESCRIPCION;
             Tabla.Rows.Add(dr);
         }
