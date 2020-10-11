@@ -79,6 +79,14 @@
         .auto-style33 {
             width: 185px;
         }
+        .auto-style34 {
+            width: 199px;
+            text-align: right;
+        }
+        .auto-style35 {
+            width: 199px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -109,7 +117,9 @@
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style24">Graus Matias</td>
                     <td class="auto-style7">&nbsp;</td>
-                    <td class="auto-style9">&nbsp;</td>
+                    <td class="auto-style35">
+                        <asp:Label ID="lblListado" runat="server" Font-Bold="True" Font-Size="Large" Text="Listado de sucursales"></asp:Label>
+                    </td>
                     <td class="auto-style27">&nbsp;</td>
                     <td class="auto-style30">&nbsp;</td>
                 </tr>
@@ -125,8 +135,11 @@
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style24">Baena Dalila</td>
                     <td class="auto-style7">&nbsp;</td>
-                    <td class="auto-style9">
-                        <asp:Label ID="lblListado" runat="server" Font-Bold="True" Font-Size="Large" Text="Listado de sucursales"></asp:Label>
+                    <td class="auto-style34">
+                        Busqueda nombre de sucursal:
+                        <asp:TextBox ID="txtBuscar" runat="server"></asp:TextBox>
+&nbsp;<asp:Button ID="Btn_Buscar" runat="server" Height="26px" Text="Buscar" OnClick="Btn_Buscar_Click" />
+                    &nbsp;<asp:Button ID="btn_Limpiar" runat="server" OnClick="btn_Limpiar_Click" Text="Limpiar" />
                     </td>
                     <td class="auto-style27">&nbsp;</td>
                     <td class="auto-style30">&nbsp;</td>
@@ -210,7 +223,7 @@
                                     <br />
                                     <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionSucursal") %>' Font-Size="Small"></asp:Label>
                                     <br />
-                                    <asp:Button ID="btnSelecc" runat="server" Text="Seleccionar" Width="133px" CommandArgument='<%# Bind("Id_Sucursal") %>' CommandName="eventoSeleccionar" OnCommand="btnSelecc_Command" />
+                                    <asp:Button ID="btnSelecc" runat="server" Text="Seleccionar" Width="133px" CommandArgument='<%# Eval("NombreSucursal") %>' CommandName="eventoSeleccionar" OnCommand="btnSelecc_Command" />
                                 </td>
                             </ItemTemplate>
                             <LayoutTemplate>

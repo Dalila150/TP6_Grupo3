@@ -37,7 +37,8 @@ namespace TP6_GRUPO3
 
                 Conexion conexion = new Conexion();
 
-                string Nombre = "select NombreSucursal where Id_Sucursal =" + e.CommandArgument.ToString(), Descripcion = "select DescripcionSucursal where Id_Sucursal =" + e.CommandArgument.ToString();
+                string Nombre = "select NombreSucursal where Id_Sucursal =" + e.CommandArgument.ToString()+ "FROM SUCURSAL";
+                string Descripcion = "select DescripcionSucursal where Id_Sucursal =" + e.CommandArgument.ToString()+"FROM SUCURSAL";
 
                 AgregarFila((DataTable)Session["DatosEnviados"], e.CommandArgument.ToString(), conexion.DevolverDatos(Nombre), conexion.DevolverDatos(Descripcion)); 
 
@@ -66,5 +67,20 @@ namespace TP6_GRUPO3
             Tabla.Rows.Add(dr);
         }
 
+        protected void Btn_Buscar_Click(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text != "")
+            {
+                SqlDataSource1.SelectCommand = "SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal] FROM [Sucursal] WHERE [NombreSucursal] ='" + txtBuscar.Text + "'";
+                txtBuscar.Text = "";
+                return;
+            }
+            
+        }
+
+        protected void btn_Limpiar_Click(object sender, EventArgs e)
+        {
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        }
     }
 }

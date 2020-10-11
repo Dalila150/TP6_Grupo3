@@ -22,9 +22,16 @@ namespace TP6_GRUPO3.Clases
             adp.Fill(ds, Nombre);
             return ds.Tables[Nombre];
         }
+
         public DataTable obtenerTodasLasProvincias()
         {
             return ObtenerTabla("Provincia", "Select * from Provincia");
         }
+
+        public DataTable Obtener_Tabla_Buscar(string Nombre_Sucursal) 
+        {
+            return ObtenerTabla("Sucursal", "Select * from Sucursal WHERE NombreSucursal = '" + Nombre_Sucursal + "'" );
+        }
+
     }
 }
