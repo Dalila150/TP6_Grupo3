@@ -12,11 +12,7 @@ namespace TP6_GRUPO3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack == false)
-            {
-                gvSeleccionados.DataSource = (DataTable)Session["DatosEnviados"];
-                gvSeleccionados.DataBind();
-            }
+           
         }
     }
 }
