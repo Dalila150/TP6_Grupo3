@@ -12,7 +12,7 @@ namespace TP6_GRUPO3.Clases
 {
     public class Conexion
     {
-        string ruta = "Data Source=" + Dns.GetHostName() + "\\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True";
+        string ruta = "Data Source=SALGADO-PC;Initial Catalog = BDSucursales; Integrated Security = True";
 
         //string ruta = "Data Source=localhost\\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True";
 
@@ -57,9 +57,10 @@ namespace TP6_GRUPO3.Clases
         {
             SqlConnection conexcion = ObtenerConexion();
             SqlCommand comando = new SqlCommand(Consulta, conexcion);
-            string dato = comando.ToString();
-            conexcion.Close();
-            return dato;
+
+            string dato = (string)comando.ExecuteScalar();
+             
+            return dato; 
         }
 
         public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, String NombreSP)

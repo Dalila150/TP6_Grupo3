@@ -164,7 +164,7 @@
                     </td>
                     <td class="auto-style8">&nbsp;</td>
                     <td class="auto-style10">
-                        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
+                        <asp:ListView ID="lvSucursales" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
                            <%-- <AlternatingItemTemplate>
                                 <td runat="server" style="background-color:#FFF8DC;">NombreSucursal:
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
@@ -223,7 +223,7 @@
                                     <br />
                                     <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionSucursal") %>' Font-Size="Small"></asp:Label>
                                     <br />
-                                    <asp:Button ID="btnSelecc" runat="server" Text="Seleccionar" Width="133px" CommandName="eventoSeleccionar" OnCommand="btnSelecc_Command" />
+                                    <asp:Button ID="btnSelecc" runat="server" Text="Seleccionar" Width="133px" CommandName="eventoSeleccionar" OnCommand="btnSelecc_Command" CommandArgument='<%# Eval("Id_Sucursal") %>' />
                                 </td>
                             </ItemTemplate>
                             <LayoutTemplate>
@@ -259,7 +259,7 @@
                                     <br /></td>
                             </SelectedItemTemplate>
                         </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString(Adriel) %>" SelectCommand="SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString(Lucas) %>" SelectCommand="SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal]"></asp:SqlDataSource>
                     </td>
                     <td class="auto-style29">&nbsp;</td>
                     <td class="auto-style32">&nbsp;</td>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TP6_GRUPO3.Clases;
 using System.Data;
+using System.Configuration;
 
 namespace TP6_GRUPO3
 {
@@ -35,12 +36,19 @@ namespace TP6_GRUPO3
                     Session["DatosEnviados"] = CrearTabla();
                 }
 
+                
+               
                 Conexion conexion = new Conexion();
 
-                string Nombre = "select NombreSucursal where Id_Sucursal =" + e.CommandArgument.ToString()+ "FROM SUCURSAL";
-                string Descripcion = "select DescripcionSucursal where Id_Sucursal =" + e.CommandArgument.ToString()+"FROM SUCURSAL";
+               string consulta_Nombre = "select NombreSucursal FROM SUCURSAL where id_Sucursal =" + e.CommandArgument.ToString();
+               string consulta_Descripcion = "select DescripcionSucursal FROM SUCURSAL where Id_Sucursal ="  + e.CommandArgument.ToString();
 
-                AgregarFila((DataTable)Session["DatosEnviados"], e.CommandArgument.ToString(), conexion.DevolverDatos(Nombre), conexion.DevolverDatos(Descripcion)); 
+
+                string nombre= conexion.DevolverDatos(consulta_Nombre);
+               string descripcion = conexion.DevolverDatos(consulta_Descripcion);
+
+
+                AgregarFila((DataTable)Session["DatosEnviados"], e.CommandArgument.ToString(), nombre, descripcion); 
 
             }
         }
