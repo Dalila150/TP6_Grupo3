@@ -82,5 +82,22 @@ namespace TP6_GRUPO3
         {
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
+
+        protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //NO BORRAR PORQUE SIN QUERER CREE EL EVENTO Y NO SE DESVINCULARLO JE
+        }
+
+        protected void btnProv_Command(object sender, CommandEventArgs e)
+        {
+            if(e.CommandName == "comandoBoton")
+            {
+                string prov = e.CommandArgument.ToString();
+
+                // ListView1
+                //SqlDataSource1.SelectCommand = "SELECT [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal] FROM [Sucursal] WHERE [NombreSucursal] ='" + txtBuscar.Text + "'";
+                SqlDataSource1.SelectCommand = "SELECT[NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal] FROM[Sucursal] inner join[Provincia] on[Id_ProvinciaSucursal] = [Id_Provincia] WHERE[DescripcionProvincia] = '" + prov + "'";
+            }
+        }
     }
 }

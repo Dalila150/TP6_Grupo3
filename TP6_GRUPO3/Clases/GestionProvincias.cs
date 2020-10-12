@@ -30,7 +30,8 @@ namespace TP6_GRUPO3.Clases
 
         public DataTable Obtener_Tabla_Buscar(string Nombre_Sucursal) 
         {
-            return ObtenerTabla("Sucursal", "Select * from Sucursal WHERE NombreSucursal = '" + Nombre_Sucursal + "'" );
+           // return ObtenerTabla("Sucursal", "Select * from Sucursal WHERE NombreSucursal = '" + Nombre_Sucursal + "'" );
+            return ObtenerTabla("Sucursal", "Select * from Sucursal WHERE NombreSucursal = " + Nombre_Sucursal );
         }
 
     }

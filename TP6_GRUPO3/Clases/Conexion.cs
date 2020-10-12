@@ -12,8 +12,9 @@ namespace TP6_GRUPO3.Clases
 {
     public class Conexion
     {
+        string ruta = "Data Source=" + Dns.GetHostName() + "\\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True";
 
-        string ruta = "Data Source=localhost\\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True";
+        //string ruta = "Data Source=localhost\\sqlexpress;Initial Catalog=BDSucursales;Integrated Security=True";
 
         //string ruta = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=BDSucursales;Persist Security Info=True;User ID=sa;Password=123456";
 

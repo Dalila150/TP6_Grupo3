@@ -98,10 +98,10 @@
                     <td class="auto-style24">Scarpato Wanda</td>
                     <td class="auto-style7">&nbsp;</td>
                     <td class="auto-style9">
-                        <asp:HyperLink ID="HyperLink" runat="server" NavigateUrl="~/ListadoSucursalesSeleccionados.aspx.designer.cs">Listado de sucursales</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink" runat="server" NavigateUrl="~/SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
                     </td>
                     <td class="auto-style27">
-                        <asp:HyperLink ID="HyperLink1" runat="server">Mostrar sucursales seleccionadas</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ListadoSucursalesSeleccionados.aspx">Mostrar sucursales seleccionadas</asp:HyperLink>
                     </td>
                     <td class="auto-style30">&nbsp;</td>
                 </tr>
@@ -157,14 +157,14 @@
                     <td class="auto-style26">
                         <asp:DataList ID="dlProvincias" runat="server">
                             <ItemTemplate>
-                                <asp:Button ID="btnProv" runat="server" Text='<%# Bind("DescripcionProvincia") %>' />
+                                <asp:Button ID="btnProv" runat="server" Text='<%# Bind("DescripcionProvincia") %>' CommandArgument='<%# Eval("DescripcionProvincia") %>' CommandName="comandoBoton" OnCommand="btnProv_Command" Width="150px" />
                                 <br />
                             </ItemTemplate>
                         </asp:DataList>
                     </td>
                     <td class="auto-style8">&nbsp;</td>
                     <td class="auto-style10">
-                        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3">
+                        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
                            <%-- <AlternatingItemTemplate>
                                 <td runat="server" style="background-color:#FFF8DC;">NombreSucursal:
                                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' />
@@ -223,7 +223,7 @@
                                     <br />
                                     <asp:Label ID="lblDescripcion" runat="server" Text='<%# Eval("DescripcionSucursal") %>' Font-Size="Small"></asp:Label>
                                     <br />
-                                    <asp:Button ID="btnSelecc" runat="server" Text="Seleccionar" Width="133px" CommandArgument='<%# Eval("Id_Sucursal") %>' CommandName="eventoSeleccionar" OnCommand="btnSelecc_Command" />
+                                    <asp:Button ID="btnSelecc" runat="server" Text="Seleccionar" Width="133px" CommandName="eventoSeleccionar" OnCommand="btnSelecc_Command" />
                                 </td>
                             </ItemTemplate>
                             <LayoutTemplate>
